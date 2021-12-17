@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Mountains of Christmas';
+  src: url('./Fonts/MountainsofChristmas-Regular.ttf') format('truetype');
+}
+
+$header-footer-height: 70px;
+$main-min-height: calc(100vh - ($header-footer-height * 2));
+$background-color: #e3f2fd;
+$primary-color: #0d6efd;
+$secondary-color: #07bb01; 
+$transition: .3s;
+$primary-filter: invert(50%) sepia(100%) saturate(5440%) hue-rotate(207deg) 
+    brightness(97%) contrast(104%);
+$secondary-filter: invert(46%) sepia(64%) saturate(2310%) hue-rotate(82deg) 
+    brightness(100%) contrast(110%);
+$font-type: Mountains of Christmas, cursive;
+$backdrop-blur: blur(6px);
+$margin-control-items: 10px;
+
+@mixin background($link) {
+  background-image: url($link);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
