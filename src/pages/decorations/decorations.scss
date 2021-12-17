@@ -1,0 +1,93 @@
+.controls-container {
+  position: sticky;
+  flex: 1 1 0;
+  top: 30px;
+  height: fit-content;
+}
+
+.controls-container {
+  color: $controls-color;
+}
+
+.controls-item {
+  margin-bottom: $margin-control-items;
+}
+
+.sort-button {
+  @include background(
+      $link: '../assets/image/purple-ball.png',
+      $fixed: false);
+  width: 40px;
+}
+
+.shape-button {
+  width: $controls-button-size;
+  height: $controls-button-size;
+  border: none;
+}
+
+.shape-button:nth-child(2) {
+  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+}
+.shape-button:nth-child(3) {
+  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+}
+.shape-button:nth-child(4) {
+  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+}
+.shape-button:nth-child(5) {
+  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+}
+.shape-button:nth-child(6) {
+  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+}
+
+.color-button {
+  width: $controls-button-size;
+  height: $controls-button-size;
+  border-radius: 5px;
+  border: 1px solid $controls-color;
+}
+
+.color-button:nth-child(1) {
+  background-color: white;
+}
+.color-button:nth-child(2) {
+  background-color: yellow;
+}
+.color-button:nth-child(3) {
+  background-color: red;
+}
+.color-button:nth-child(4) {
+  background-color: blue;
+}
+.color-button:nth-child(5) {
+  background-color: green;
+}
+
+.size-container {
+  width: $controls-button-size * 5;
+}
+
+.cards-container {
+  flex: 2 1 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: space-evenly;
+  gap: 36px 20px;
+  color: $cards-color;
+}
+
+.card-item {
+  height: 300px;
+  border: 1px solid $controls-color;
+  border-radius: 10px;
+  background: $primary-color;
+}
+
+.card-item__p {
+  margin: 0px;
+}
