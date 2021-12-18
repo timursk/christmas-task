@@ -15,7 +15,7 @@
 
 .sort-button {
   @include background(
-      $link: '../assets/image/purple-ball.png',
+      $link: '../assets/svg/search.svg',
       $fixed: false);
   width: 40px;
 }
@@ -27,19 +27,19 @@
 }
 
 .shape-button:nth-child(2) {
-  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+  @include background-controls__color('../assets/svg/ball.svg');
 }
 .shape-button:nth-child(3) {
-  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+  @include background-controls__color('../assets/svg/bell.svg');
 }
 .shape-button:nth-child(4) {
-  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+  @include background-controls__color('../assets/svg/cone.svg');
 }
 .shape-button:nth-child(5) {
-  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+  @include background-controls__color('../assets/svg/snowflake.svg');
 }
 .shape-button:nth-child(6) {
-  @include background-controls__color('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/d3cbbbeb3207b1a90bdb2c1ba5bb27a6492744f5/assets/svg/cone.svg');
+  @include background-controls__color('../assets/svg/toy.svg');
 }
 
 .color-button {
