@@ -26,6 +26,10 @@
   border: none;
 }
 
+.shape-button.active  {
+  filter: $primary-filter;
+}
+
 .shape-button:nth-child(2) {
   @include background-controls__color('../assets/svg/ball.svg');
 }

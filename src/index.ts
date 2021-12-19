@@ -8,24 +8,32 @@ import { Routes } from './Utils/types';
 import { Utils } from './Utils/utils';
 import noUiSlider from 'nouislider';
 
-const mainRoot = document.querySelector('.main-root');
-const routes: Routes = {
-  '/': mainElement,
-  '/decorations': decorationsElement,
-  'ERROR': `alert('ERROR')`,
-}
+// const mainRoot = document.querySelector('.main-root');
+// const routes: Routes = {
+//   '/': mainElement,
+//   '/decorations': decorationsElement,
+//   'ERROR': `alert('ERROR')`,
+// }
 
-const router = () => {
+// const router = () => {
+//   const request: string = Utils.parseURL();
+//   const page = request ? routes[request] : routes['ERROR'];
+//   mainRoot.innerHTML = page;
+
+// }
+
+// window.addEventListener('hashchange', router);
+// window.addEventListener('load', router);
+
+
+import App from './components/app';
+
+
+const app = new App();
+const start = () => {
   const request: string = Utils.parseURL();
-  const page = request ? routes[request] : routes['ERROR'];
-  mainRoot.innerHTML = page;
-
+  app.start(request);
 }
 
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
-
-// import App from './components/App';
-
-// const app = new App();
-// app.start();
+window.addEventListener('hashchange', start);
+window.addEventListener('load', start);

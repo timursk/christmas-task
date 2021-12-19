@@ -1,6 +1,9 @@
 import Controller from './controller/controller';
 import Data from './model/data';
 import View from './view/appView';
+import { Routes } from '../Utils/types';
+
+
 
 class App {
   data: Data;
@@ -12,8 +15,9 @@ class App {
     this.view = new View();
   }
 
-  start(link: string): void {
-    
+  async start(link: string): Promise<void> {
+    this.controller.getPage(link, (data) => { this.view.drawPage(data) });
+    // this.controller.getCards((data) => this.view.draw(data))
   }
 }
 
