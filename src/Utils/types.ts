@@ -12,4 +12,22 @@ export interface data {
   [key:string]: string,
 }
 
+export interface startData {
+  num: string,
+  name: string,
+  count: string,
+  year: string,
+  shape: string,
+  color: string,
+  size: string,
+  favorite: boolean,
+}
+
+export interface Options {
+  [key:string]: string | null | boolean | string[],
+  shape?: string[],
+  color?: string[],
+  size?: string[],
+}
+
 export type callbackPage = (data: string) => void;

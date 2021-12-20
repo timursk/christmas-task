@@ -21,9 +21,14 @@
 }
 
 .shape-button {
+  transition: .3s;
   width: $controls-button-size;
   height: $controls-button-size;
   border: none;
+}
+
+.shape-button:hover {
+  filter: brightness(40%);
 }
 
 .shape-button.active  {
@@ -56,6 +61,10 @@
   height: $controls-button-size;
   border-radius: 5px;
   border: 1px solid $controls-color;
+}
+
+.color-button:hover {
+  border: 2px solid black;
 }
 
 .color-button.active::after {

@@ -1,8 +1,8 @@
-import { callbackPage } from "../../Utils/types";
 import Data from "../model/data";
 import './nouislider.css';
 import _default, { target, API } from 'nouislider';
 const noUiSlider = _default;
+import { Options, callbackPage } from "../../Utils/types";
 
 class Controller {
   data: Data;
@@ -30,12 +30,13 @@ class Controller {
     const sizes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-input');
     const favorite = document.querySelector('.favorite-input') as HTMLInputElement;
 
-    search.addEventListener('input', () => { console.log(search.value) });
-    select.addEventListener('input', function () { console.log(this.value) });
-    shapes.forEach((shape) => shape.addEventListener('click', () => { if(shape.classList.contains('active')) console.log(shape.dataset.filter) }));
-    colors.forEach((color) => color.addEventListener('click', () => { if(color.classList.contains('active')) console.log(color.dataset.filter) }));
-    sizes.forEach((size) => size.addEventListener('click', () => { if(size.checked) console.log(size.value) }))
-    favorite.addEventListener('input', () => { console.log(favorite.checked) })
+    search.addEventListener('input', () => { this.changeData('name', search.value) });
+    select.addEventListener('input', () => { this.changeData('sort', select.value) });
+    shapes.forEach((shape) => shape.addEventListener('click', () => { this.changeArrData('shape', shape.dataset.filter) }));
+    // colors.forEach((color) => color.addEventListener('click', () => { if(color.classList.contains('active')) console.log(color.dataset.filter) }));
+    colors.forEach((color) => color.addEventListener('click', () => { this.changeArrData('color', color.dataset.filter) }));
+    sizes.forEach((size) => size.addEventListener('click', () => { this.changeArrData('size', size.value) }));
+    favorite.addEventListener('input', () => { this.changeData('favorite', favorite.checked) })
   
   }
 
@@ -67,12 +68,69 @@ class Controller {
     //   console.log(handle);
     // });
 
-    (<API>countSlider.noUiSlider).on('slide', (arr) => {
-      console.log(arr);
+    (<API>countSlider.noUiSlider).on('update', (arr, handle) => {
+      if (handle) {
+        let count = Math.floor(+arr[1]);
+        this.data.options.countMax = count.toString();
+      }
+      else {
+        let count = Math.floor(+arr[0]);
+        this.data.options.countMin = count.toString();
+      }
+      console.log(this.data.options);
     });
-    (<API>yearSlider.noUiSlider).on('slide', (arr) => {
-      console.log(arr);
+    (<API>yearSlider.noUiSlider).on('update', (arr, handle) => {
+      if (handle) {
+        let count = Math.floor(+arr[1]);
+        this.data.options.yearMax = count.toString();
+      }
+      else {
+        let count = Math.floor(+arr[0]);
+        this.data.options.yearMin = count.toString();
+      }
+      console.log(this.data.options);
     });
+  }
+
+  changeData(key: string, value: string | boolean) {
+    this.data.options[key] = value;
+    console.log(this.data.options);
+    this.filterCards(key, value);
+  }
+
+  changeArrData(key: 'shape' | 'color' | 'size', value: string) {
+    const idx = this.data.options[key].indexOf(value);
+    (idx === -1)
+        ? this.data.options[key].push(value)
+        : this.data.options[key].splice(idx, 1);
+    console.log(this.data.options);
+  }
+
+  filterCards(key: string, value: string | boolean) {
+    const dataOptions: Options = {};
+    for (let key in this.data.options) {
+      if (key !== 'sort') {
+        const value = this.data.options[key];
+        if (value !== null || (Array.isArray(value) && value.length !== 0)) {
+          dataOptions[key] = value;
+        }
+      }
+    }
+    console.log(dataOptions);
+    
+    this.data.cards.forEach((item, idx) => {
+      if (+dataOptions.yearMin > +item.year || +dataOptions.yearMax < +item.year) this.data.cards.splice(idx, 1);
+      // color: "желтый"
+      // count: "2"
+      // favorite: false
+      // name: "Large ball with a pattern"
+      // num: "1"
+      // shape: "шар"
+      // size: "большой"
+      // year: "1960"
+    }); 
+
+    console.log(this.data.cards);
   }
 }
 

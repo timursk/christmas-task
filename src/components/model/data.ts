@@ -1,24 +1,25 @@
-import { IData } from "../../Utils/types";
+import { IData, Routes, Options, startData } from "../../Utils/types";
 import data from "../../data";
 import { mainElement } from "../../pages/main/main";
 import { decorationsElement } from "../../pages/decorations/decorations";
-import { Routes } from "../../Utils/types";
 
 class Data implements IData {
-  cards: Object[];
-  options: Object;
-  data: Object[];
+  cards: startData[];
+  options: Options;
+  data: startData[];
   routes: Routes;
   constructor() {
-    this.cards = [];
+    this.cards = data;
     this.options = {
-      num: null,
+      sort: null,
       name: null,
-      count: null,
-      year: null,
-      shape: null,
-      color: null,
-      size: null,
+      countMin: null,
+      countMax: null,
+      yearMin: null,
+      yearMax: null,
+      shape: [],
+      color: [],
+      size: [],
       favorite: null,
     };
     this.data = data;
