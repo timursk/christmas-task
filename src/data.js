@@ -151,7 +151,7 @@ const data = [
   },
   {
     num: '16',
-    name: 'Painted pine cone Landscape',
+    name: 'Pine cone Landscape',
     count: '3',
     year: '1970',
     shape: 'шишка',
@@ -271,7 +271,7 @@ const data = [
   },
   {
     num: '28',
-    name: 'Burgundy ball with pattern',
+    name: 'Burgundy ball w/ pattern',
     count: '10',
     year: '2010',
     shape: 'шар',

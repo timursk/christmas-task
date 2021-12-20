@@ -2,22 +2,31 @@ import Data from "../model/data";
 import './nouislider.css';
 import _default, { target, API } from 'nouislider';
 const noUiSlider = _default;
-import { Options, callbackPage } from "../../Utils/types";
+import { Options, callbackPage, callbackCards, startData } from "../../Utils/types";
+import View from "../view/appView";
 
 class Controller {
   data: Data;
+  view: View;
+  cards: startData[];
+  searchText: string | null;
+  sortText: string | null;
   constructor() {
     this.data = new Data();
+    this.view = new View();
+    this.cards = this.data.data;
+    this.searchText = null;
+    this.sortText = null;
   }
 
   getPage(link: string, callback: callbackPage) {
     const data = this.data.routes[link];
-    callback(data);
+    this.view.drawPage(data);
     if (link == '/decorations') this.addControlsEvents();
   }
 
-  getCards(callback: callbackPage) {
-    console.log('works');
+  getCards(callback: callbackCards) {
+    this.filterCards();
   }
 
   addControlsEvents() {
@@ -63,39 +72,36 @@ class Controller {
       },
       step: 10,
     });
-    // slider.noUiSlider.on('update', function (values: { [x: string]: any; }, handle: string | number) {
-    //   var value = values[handle];
-    //   console.log(handle);
-    // });
 
-    (<API>countSlider.noUiSlider).on('update', (arr, handle) => {
+    (<API>countSlider.noUiSlider).on('slide', (arr, handle) => {
       if (handle) {
         let count = Math.floor(+arr[1]);
         this.data.options.countMax = count.toString();
+        this.filterCards();
       }
       else {
         let count = Math.floor(+arr[0]);
         this.data.options.countMin = count.toString();
+        this.filterCards();
       }
-      console.log(this.data.options);
     });
-    (<API>yearSlider.noUiSlider).on('update', (arr, handle) => {
+    (<API>yearSlider.noUiSlider).on('slide', (arr, handle) => {
       if (handle) {
         let count = Math.floor(+arr[1]);
         this.data.options.yearMax = count.toString();
+        this.filterCards();
       }
       else {
         let count = Math.floor(+arr[0]);
         this.data.options.yearMin = count.toString();
+        this.filterCards();
       }
-      console.log(this.data.options);
     });
   }
 
   changeData(key: string, value: string | boolean) {
     this.data.options[key] = value;
-    console.log(this.data.options);
-    this.filterCards(key, value);
+    this.filterCards();
   }
 
   changeArrData(key: 'shape' | 'color' | 'size', value: string) {
@@ -103,34 +109,44 @@ class Controller {
     (idx === -1)
         ? this.data.options[key].push(value)
         : this.data.options[key].splice(idx, 1);
-    console.log(this.data.options);
+    this.filterCards();
   }
 
-  filterCards(key: string, value: string | boolean) {
-    const dataOptions: Options = {};
-    for (let key in this.data.options) {
-      if (key !== 'sort') {
-        const value = this.data.options[key];
-        if (value !== null || (Array.isArray(value) && value.length !== 0)) {
-          dataOptions[key] = value;
-        }
-      }
-    }
-    console.log(dataOptions);
-    
-    this.data.cards.forEach((item, idx) => {
-      if (+dataOptions.yearMin > +item.year || +dataOptions.yearMax < +item.year) this.data.cards.splice(idx, 1);
-      // color: "желтый"
-      // count: "2"
-      // favorite: false
-      // name: "Large ball with a pattern"
-      // num: "1"
-      // shape: "шар"
-      // size: "большой"
-      // year: "1960"
-    }); 
+  filterCards() {
+    const options = this.data.options;
+    const data = this.data.data;
+    const cards: startData[] = [];
 
-    console.log(this.data.cards);
+    data.forEach((card, idx) => {
+      if (options.name && typeof options.name === 'string' && !card.name.toLowerCase().includes(options.name)) return;
+      if (options.countMax && +card.count > +options.countMax) return;
+      if (options.countMin && +card.count < +options.countMin) return;
+      
+      if (options.yearMax && +card.year > +options.yearMax) return;
+      if (options.yearMin && +card.year < +options.yearMin) return;
+      
+      if (options.shape.length > 0) {
+        if (!options.shape.includes(card.shape)) return;
+      }
+     
+      if (options.color.length > 0) {
+        if (!options.color.includes(card.color)) return;
+      }
+      
+      if (options.size.length > 0) {
+        if (!options.size.includes(card.size)) return;
+      }
+
+      if (options.favorite && options.favorite !== card.favorite) return;
+      cards.push(card); 
+    });
+    if (options.sort && typeof options.sort === 'string') {
+      
+      if (options.sort == 'za') {}
+      if (options.sort == 'low') {}
+      if (options.sort == 'high') {}
+    }
+    this.view.drawCards(cards);
   }
 }
 

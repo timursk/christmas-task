@@ -13,6 +13,7 @@ export interface data {
 }
 
 export interface startData {
+  [key:string]: string | boolean,
   num: string,
   name: string,
   count: string,
@@ -31,3 +32,4 @@ export interface Options {
 }
 
 export type callbackPage = (data: string) => void;
+export type callbackCards = (data: startData[]) => void;

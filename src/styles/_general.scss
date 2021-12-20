@@ -57,6 +57,7 @@ body {
 }
 
 .main-decorations {
+  min-height: calc(100vh - 140px);
   background-color: $background-color;
 }
 

@@ -17,7 +17,7 @@ class App {
 
   async start(link: string): Promise<void> {
     this.controller.getPage(link, (data) => { this.view.drawPage(data) });
-    // this.controller.getCards((data) => this.view.draw(data))
+    this.controller.getCards((data) => this.view.drawCards(data))
     
   }
 }
