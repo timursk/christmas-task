@@ -46,18 +46,40 @@
   @include background-controls__color('../assets/svg/toy.svg');
 }
 
+.color-container {
+  max-width: 220px;
+}
+
 .color-button {
+  position: relative;
   width: $controls-button-size;
   height: $controls-button-size;
   border-radius: 5px;
   border: 1px solid $controls-color;
 }
 
+.color-button.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  width: 12px;
+  height: 20px;
+  border: solid #fff;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+.color-button.active:nth-child(1)::after {
+  border-color: #000;
+}
+
 .color-button:nth-child(1) {
   background-color: white;
 }
 .color-button:nth-child(2) {
-  background-color: yellow;
+  background-color: #FDD700;
 }
 .color-button:nth-child(3) {
   background-color: red;
@@ -67,6 +89,11 @@
 }
 .color-button:nth-child(5) {
   background-color: green;
+}
+
+.count-slider,
+.year-slider {
+  width: 200px;
 }
 
 .size-container {

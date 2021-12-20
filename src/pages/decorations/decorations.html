@@ -19,42 +19,52 @@
         </div>
         <div class="shape controls-item">
           <p>Shape</p>
-            <button class="shape-button" data-filter="1"></button>
-            <button class="shape-button" data-filter="2"></button>
-            <button class="shape-button" data-filter="3"></button>
-            <button class="shape-button" data-filter="4"></button>
-            <button class="shape-button" data-filter="5"></button>
+            <button class="shape-button" data-filter="шар"></button>
+            <button class="shape-button" data-filter="колокольчик"></button>
+            <button class="shape-button" data-filter="шишка"></button>
+            <button class="shape-button" data-filter="снежинка"></button>
+            <button class="shape-button" data-filter="фигурка"></button>
           
         </div>
         <div class="color controls-item">
           <p>Color</p>
-          <div class="color-container">
-            <button class="color-button" data-filter=""></button>
-            <button class="color-button" data-filter=""></button>
-            <button class="color-button" data-filter=""></button>
-            <button class="color-button" data-filter=""></button>
-            <button class="color-button" data-filter=""></button>
+          <div class="color-container d-flex justify-content-between align-items-center">
+            <button class="color-button" data-filter="белый"></button>
+            <button class="color-button" data-filter="желтый"></button>
+            <button class="color-button" data-filter="красный"></button>
+            <button class="color-button" data-filter="синий"></button>
+            <button class="color-button" data-filter="зелёный"></button>
           </div>
         </div>
         <div class="size controls-item">
           <p>Size</p>
           <div class="controls-item size-container d-flex justify-content-between">
-            <label><input class="form-check-input" type="checkbox"> Big</label>
-            <label><input class="form-check-input" type="checkbox"> Medium</label>
-            <label><input class="form-check-input" type="checkbox"> Small</label>
+            <label><input class="size-input form-check-input" 
+                type="checkbox" name="size" value="большой"> 
+              Big
+              </label>
+            <label><input class="size-input form-check-input" 
+                type="checkbox" name="size" value="средний"> 
+              Medium
+            </label>
+            <label><input class="size-input form-check-input" 
+                type="checkbox" name="size" value="малый">
+              Small
+            </label>
           </div>
         </div>
         <div class="controls-item">
-          <label><input class="form-check-input" type="checkbox"> Favorite</label>
+          <label><input class="favorite-input form-check-input" type="checkbox"> Favorite</label>
         </div>
         <div class="range">
           <div class="count controls-item">
             <p>Count of items</p>
-            <div id="count-slider"></div>
+            <div class="count-slider"></div>
+            <p class="count-slider-p"></p>
           </div>
           <div class="year controls-item">
             <p>Year of purchase</p>
-            <div id="year-slider"></div>
+            <div class="year-slider"></div>
           </div>
         </div>
         <div class="controls-settings controls-item">

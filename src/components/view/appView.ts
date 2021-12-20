@@ -4,8 +4,10 @@ class View {
     mainRoot.innerHTML = data;
     // querySelectorAll<K extends keyof HTMLElementTagNameMap>(selectors: K): NodeListOf<HTMLElementTagNameMap[K]>;
     const shapes: NodeListOf<HTMLElement> = document.querySelectorAll('.shape-button');
+    const colors: NodeListOf<HTMLElement> = document.querySelectorAll('.color-button');
     // shapes.forEach((shape) => console.log(shape.dataset));
     shapes.forEach((shape) => shape.addEventListener('click', () => {shape.classList.toggle('active')}));
+    colors.forEach((color) => color.addEventListener('click', () => {color.classList.toggle('active')}));
   }
 }
 
