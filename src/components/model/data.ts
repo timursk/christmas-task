@@ -11,6 +11,7 @@ class Data implements IData {
   constructor() {
     this.cards = data;
     this.options = {
+      reset: null,
       sort: null,
       name: null,
       countMin: null,

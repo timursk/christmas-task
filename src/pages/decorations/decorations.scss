@@ -100,6 +100,12 @@
   background-color: green;
 }
 
+.form-check-input,
+.checkbox-label {
+  cursor: pointer;
+  user-select: none; 
+}
+
 .count-slider,
 .year-slider {
   width: 200px;

@@ -39,7 +39,9 @@ class Controller {
     const colors: NodeListOf<HTMLElement> = document.querySelectorAll('.color-button');
     const sizes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-input');
     const favorite = document.querySelector('.favorite-input') as HTMLInputElement;
+    const reset = document.querySelector('.reset-filters');
     
+
     search.addEventListener('input', () => { this.changeData('name', search.value) });
     select.addEventListener('input', () => { this.changeData('sort', select.value) });
     shapes.forEach((shape) => shape.addEventListener('click', () => { this.changeArrData('shape', shape.dataset.filter) }));
