@@ -126,6 +126,11 @@
   border: 1px solid $controls-color;
   border-radius: 10px;
   background: $primary-color;
+  cursor: pointer;
+}
+
+.card-item.active {
+  background: $secondary-color;
 }
 
 .card-item__p {

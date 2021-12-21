@@ -27,6 +27,7 @@ class Controller {
 
   getCards(callback: callbackCards) {
     this.filterCards();
+    
   }
 
   addControlsEvents() {
@@ -38,7 +39,7 @@ class Controller {
     const colors: NodeListOf<HTMLElement> = document.querySelectorAll('.color-button');
     const sizes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-input');
     const favorite = document.querySelector('.favorite-input') as HTMLInputElement;
-
+    
     search.addEventListener('input', () => { this.changeData('name', search.value) });
     select.addEventListener('input', () => { this.changeData('sort', select.value) });
     shapes.forEach((shape) => shape.addEventListener('click', () => { this.changeArrData('shape', shape.dataset.filter) }));
@@ -141,10 +142,18 @@ class Controller {
       cards.push(card); 
     });
     if (options.sort && typeof options.sort === 'string') {
-      
-      if (options.sort == 'za') {}
-      if (options.sort == 'low') {}
-      if (options.sort == 'high') {}
+      if (options.sort == 'az') {
+        cards.sort((a,b) => a.name.charCodeAt(0) - b.name.charCodeAt(0));
+      }
+      if (options.sort == 'za') { 
+        cards.sort((a,b) => b.name.toLowerCase().charCodeAt(0) - a.name.toLowerCase().charCodeAt(0));
+       }
+      if (options.sort == 'low') { 
+        cards.sort((a,b) => +a.year - +b.year);
+       }
+      if (options.sort == 'high') {  
+        cards.sort((a,b) => +b.year - +a.year);
+      }
     }
     this.view.drawCards(cards);
   }

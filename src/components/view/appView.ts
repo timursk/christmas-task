@@ -41,6 +41,24 @@ class View {
       }
       cardsRoot.appendChild(fragment);
     });
+
+    const cardItem: NodeListOf<HTMLElement> = document.querySelectorAll('.card-item')
+    const counter: HTMLElement = document.querySelector('.favorite-counter');
+    let count = 0;
+
+    cardItem.forEach((card) => {
+      card.addEventListener('click', () => {
+        if (card.classList.contains('active')) {
+          count -= 1;
+          card.classList.toggle('active');
+          counter.innerHTML = count.toString();
+        } else if (count < 20){
+          count += 1;
+          card.classList.toggle('active');
+          counter.innerHTML = count.toString();
+        } else alert('No more space for favorites!')
+      });
+    });
   }
 }
 
