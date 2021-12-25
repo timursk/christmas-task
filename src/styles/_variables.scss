@@ -33,3 +33,17 @@ $backdrop-blur: blur(6px);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+@mixin background-tree($link) {
+  background: url($link);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+@mixin background-bg($link) {
+  background: url($link);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

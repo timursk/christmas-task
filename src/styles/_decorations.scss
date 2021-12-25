@@ -107,7 +107,9 @@
 }
 
 .count-slider,
-.year-slider {
+.year-slider,
+.count-slider__view,
+.year-slider__view {
   width: 200px;
 }
 
@@ -141,4 +143,8 @@
 
 .card-item__p {
   margin: 0px;
+}
+
+.no-cards {
+  color: $controls-color;
 }

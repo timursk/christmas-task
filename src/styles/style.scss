@@ -1,6 +1,8 @@
 @charset 'utf-8';
 
+@import './nouislider.css';
 @import 'variables';
 @import 'general';
-@import '../pages/main/main.scss';
-@import '../pages/decorations/decorations.scss';
+@import 'main';
+@import 'decorations';
+@import 'tree';

@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
   mode: 'development',
@@ -24,6 +25,15 @@ const baseConfig = {
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './src/assets/',
+          to: './src/assets/'
+      },
+
+      ],
+    }),
   ],
 
   module: {

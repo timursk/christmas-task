@@ -1,0 +1,191 @@
+.tree-menu {
+  min-height: calc(100vh - 140px);
+}
+
+.audio-control {
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  @include background-tree('../assets/svg/audio.svg');
+}
+
+.snow-control {
+  width: 40px;
+  height: 40px;
+  @include background-tree('../assets/svg/snow.svg');
+}
+
+.tree-container {
+  gap: 10px;
+}
+
+.tree-container::before {
+  content: 'Choose tree';
+  width: 100%;
+  padding: 10px;
+  padding-left: 0;
+}
+
+.tree-item {
+  width: 80px;
+  height: 80px;
+  border: 1px solid $controls-color;
+  border-radius: 10px;
+}
+
+.tree-item:nth-child(1) {
+  @include background-tree('../assets/tree/1.png');
+}
+.tree-item:nth-child(2) {
+  @include background-tree('../assets/tree/2.png');
+}
+.tree-item:nth-child(3) {
+  @include background-tree('../assets/tree/3.png');
+}
+.tree-item:nth-child(4) {
+  @include background-tree('../assets/tree/4.png');
+}
+.tree-item:nth-child(5) {
+  @include background-tree('../assets/tree/5.png');
+}
+.tree-item:nth-child(6) {
+  @include background-tree('../assets/tree/6.png');
+}
+
+.bg-container {
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.bg-container::before {
+  content: 'Choose background';
+  width: 100%;
+  padding: 10px;
+  padding-left: 0;
+}
+
+.bg-item {
+  width: 80px;
+  height: 80px;
+  border: 1px solid $controls-color;
+  border-radius: 10px;
+}
+
+.bg-item:nth-child(1) {
+  @include background-bg('../assets/bg/1.jpg');
+  background-size: cover;
+}
+.bg-item:nth-child(2) {
+  @include background-bg('../assets/bg/2.jpg');
+}
+.bg-item:nth-child(3) {
+  @include background-bg('../assets/bg/3.jpg');
+}
+.bg-item:nth-child(4) {
+  @include background-bg('../assets/bg/4.jpg');
+}
+.bg-item:nth-child(5) {
+  @include background-bg('../assets/bg/5.jpg');
+}
+.bg-item:nth-child(6) {
+  @include background-bg('../assets/bg/6.jpg');
+}
+.bg-item:nth-child(7) {
+  @include background-bg('../assets/bg/7.jpg');
+}
+.bg-item:nth-child(8) {
+  @include background-bg('../assets/bg/8.jpg');
+}
+
+.garland-btns {
+  margin-right: 10px;
+  gap: 10px;
+}
+
+.garland-item {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #133644 0 -1px 9px, #ccc 0 2px 12px;
+}
+
+.garland-item:nth-child(1) {
+  background: linear-gradient(115deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
+}
+.garland-item:nth-child(2) {
+  background: red;
+}
+.garland-item:nth-child(3) {
+  background: blue;
+}
+.garland-item:nth-child(4) {
+  background: yellow;
+}
+.garland-item:nth-child(5) {
+  background: green;
+}
+
+.garland-switch {
+  width: 40px;
+  height: 30px;
+  background: greenyellow;
+}
+
+
+.tree {
+  @include background('../assets/bg/1.jpg', false);
+}
+
+.tree-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.tree-toys {
+  padding-left: 10px;
+}
+
+.tree-toys__catalog {
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tree-toys__catalog::before {
+  content: 'Toys';
+  width: 100%;
+  padding: 10px;
+  padding-left: 0px;
+}
+
+.tree-toys__item {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid $controls-color;
+}
+
+.tree-toys__past {
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.tree-toys__past::-webkit-scrollbar {
+  padding-top: 10px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .5);
+  backdrop-filter: blur(6px);
+}
+
+.tree-toys__past::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: $primary-color;
+}
+
+.tree-toys__past-item {
+  display: inline-block;
+  width: 80px;
+  min-width: 80px;
+  height: 80px;
+  background: yellow;
+}

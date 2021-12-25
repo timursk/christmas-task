@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve --config ./webpack.config.js --env mode=dev"
+    "start": "webpack serve --config ./webpack.config.js --env mode=dev",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint src/ --fix",
+    "prettier": "prettier --write \"**/*.+(js|ts|(sa|sc)ss)\""
   },
   "keywords": [],
   "author": "",
@@ -13,12 +16,21 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
     "nouislider": "^15.5.0",
+    "prettier": "^2.5.1",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
