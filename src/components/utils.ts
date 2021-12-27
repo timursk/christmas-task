@@ -1,4 +1,4 @@
-import { Data } from "./types";
+import { Data, DragEvent } from "./types";
 import data from "../data";
 
 const Utils = {
@@ -33,9 +33,16 @@ const Utils = {
     count.innerText = card.count;
     img.width = 50;
     img.height = 50;
+    img.draggable = true;
+    img.id = `drag-${card.num}`;
+    img.ondragstart = handleDragEvent;
     item.append(img, count);
     return item;
-  }
+  },
 }
 
 export default Utils;
+
+const handleDragEvent = (e: DragEvent<HTMLImageElement>) => {
+  e.dataTransfer.setData('text', (<HTMLImageElement>e.target).id);
+};

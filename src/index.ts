@@ -3,7 +3,7 @@ import Utils from './components/utils';
 import mainElement from './pages/main.html';
 import decorationsElement from './pages/decorations.html';
 import treeElement from './pages/tree.html';
-import { Colors, ColorsKey, Data, Routes, Shapes, ShapesKey,  Sizes,  SizeKey,  SortModel, SortOrder, SortOrderKey } from './components/types';
+import { Colors, ColorsKey, Data, Routes, Shapes, ShapesKey,  Sizes,  SizeKey,  SortModel, SortOrder, SortOrderKey, DragEvent } from './components/types';
 import _default, { target, API } from "nouislider";
 const noUiSlider = _default;
 import data from './data';
@@ -331,8 +331,21 @@ const addTreeEvents = () => {
     item.addEventListener('click', () => {
       console.log('works');
     });
-  })
+  });
 
+  const map = document.querySelector('.testMap');
+  const area: HTMLAreaElement = document.querySelector('.testMapArea');
+  area.ondragover = (ev) => { ev.preventDefault(); }
+  area.ondrop = (ev) => {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const elem = document.getElementById(data);
+    (<HTMLAreaElement>area).appendChild(elem);
+    console.log(ev);
+    elem.style.left = ev.offsetX - 25 + 'px';
+    elem.style.top = ev.y - 25 - 70 + 'px';
+    
+  }
 }
 
 const drawFavorites = () => {

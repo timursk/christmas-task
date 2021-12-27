@@ -30,6 +30,7 @@
     color: #fff;
     position: absolute;
     top: -20px;
+    pointer-events: none;
     animation: fall linear forwards;
   
   @keyframes fall {
@@ -220,6 +221,11 @@
   min-width: 80px;
   height: 80px;
   background: yellow;
+}
+
+[id^='drag-'] {
+  position: absolute;
+  cursor: grab;
 }
 
 $globe-width:   12px;
