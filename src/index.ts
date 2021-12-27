@@ -27,9 +27,14 @@ const start = () => {
   const link = Utils.parseURL();
   const elem = routes[link];
   document.querySelector('.main-root').innerHTML = elem;
-  createNoUISliders();
-  addControlsEvents();
-  drawCards(data);
+  if (link === '/decorations') {
+    createNoUISliders();
+    addControlsEvents();
+    drawCards(data);
+  } else if (link === '/tree') {
+    addTreeEvents();
+    drawFavorites();
+  }
 }
 
 window.addEventListener('hashchange', start);
@@ -288,3 +293,61 @@ const drawCards = (data: Data[]) => {
   }
 }
 
+const addTreeEvents = () => {
+  const audioBtn = document.querySelector('.audio-control');
+  const music: HTMLAudioElement = document.querySelector('.music');
+  const snowBtn = document.querySelector('.snow-control');
+  let idxSnowInterval: number;
+  const treeItems: NodeListOf<HTMLElement> = document.querySelectorAll('.tree-item');
+  const bgItems: NodeListOf<HTMLElement> = document.querySelectorAll('.bg-item');
+  const garlandItems: NodeListOf<HTMLElement> = document.querySelectorAll('.garland-item');
+  const bg: HTMLElement = document.querySelector('.tree');
+  const tree: HTMLImageElement = document.querySelector('.tree-image');
+
+  audioBtn.addEventListener('click', () => {
+    audioBtn.classList.toggle('active');
+    audioBtn.classList.contains('active')
+        ? music.play()
+        : music.pause();
+  });
+  snowBtn.addEventListener('click', () => {
+    snowBtn.classList.toggle('active');
+    snowBtn.classList.contains('active')
+        ? idxSnowInterval = window.setInterval(Utils.createSnowFlake, 50)
+        : Utils.clearSnow(idxSnowInterval);
+    
+  });
+  treeItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      tree.src = `../src/assets/tree/${item.dataset.tree}.png`
+    });
+  });
+  bgItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      bg.style.backgroundImage = `url(../src/assets/bg/${item.dataset.bg}.jpg)`;
+    });
+  });
+  garlandItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      console.log('works');
+    });
+  })
+
+}
+
+const drawFavorites = () => {
+  const catalog = document.querySelector('.tree-toys__catalog');
+  catalog.innerHTML = '';
+  if (favorites.length > 0) {
+    favorites.forEach((idx) => {
+      const item = Utils.createFavorite(data[+idx - 1]);
+      catalog.append(item);
+    });
+  } else {
+    const newData = data.slice(0,20);
+    newData.forEach((card) => {
+      const item = Utils.createFavorite(card);
+      catalog.append(item);
+    });
+  }
+}
