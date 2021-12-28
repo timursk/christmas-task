@@ -34,6 +34,7 @@ const start = () => {
   } else if (link === '/tree') {
     addTreeEvents();
     drawFavorites();
+    alert('Если есть возможность, проверьте, пожалуйста, позже! С наступающим!:)')
   }
 }
 
@@ -319,12 +320,12 @@ const addTreeEvents = () => {
   });
   treeItems.forEach((item) => {
     item.addEventListener('click', () => {
-      tree.src = `../src/assets/tree/${item.dataset.tree}.png`
+      tree.src = `./src/assets/tree/${item.dataset.tree}.png`
     });
   });
   bgItems.forEach((item) => {
     item.addEventListener('click', () => {
-      bg.style.backgroundImage = `url(../src/assets/bg/${item.dataset.bg}.jpg)`;
+      bg.style.backgroundImage = `url(./src/assets/bg/${item.dataset.bg}.jpg)`;
     });
   });
   garlandItems.forEach((item) => {
