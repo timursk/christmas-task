@@ -179,6 +179,7 @@
 }
 
 .tree-toys__catalog {
+  position: relative;
   gap: 10px;
   margin-bottom: 30px;
 }
@@ -191,10 +192,22 @@
 }
 
 .tree-toys__item {
+  position: relative;
   width: 60px;
   height: 60px;
   border-radius: 10px;
   border: 1px solid $controls-color;
+}
+
+.tree-toys__item__count {
+  position: absolute;
+  top: 80%;
+  left: 80%;
+  background: #59c752;
+  border-radius: 50%;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
 }
 
 .tree-toys__past {
@@ -220,7 +233,7 @@
   width: 80px;
   min-width: 80px;
   height: 80px;
-  background: yellow;
+  background: $cards-color;
 }
 
 [id^='drag-'] {

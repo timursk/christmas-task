@@ -34,7 +34,6 @@ const start = () => {
   } else if (link === '/tree') {
     addTreeEvents();
     drawFavorites();
-    alert('Если есть возможность, проверьте, пожалуйста, позже! С наступающим!:)')
   }
 }
 
@@ -334,19 +333,54 @@ const addTreeEvents = () => {
     });
   });
 
-  const map = document.querySelector('.testMap');
   const area: HTMLAreaElement = document.querySelector('.testMapArea');
-  area.ondragover = (ev) => { ev.preventDefault(); }
-  area.ondrop = (ev) => {
+  document.body.ondragover = (ev) => { ev.preventDefault(); }
+  document.body.ondrop = (ev) => {
     ev.preventDefault();
+    const isMap = (<HTMLElement>ev.target).className.includes('testMapArea');
     const data = ev.dataTransfer.getData("text");
     const elem = document.getElementById(data);
-    (<HTMLAreaElement>area).appendChild(elem);
-    console.log(ev);
-    elem.style.left = ev.offsetX - 25 + 'px';
-    elem.style.top = ev.y - 25 - 70 + 'px';
+    const idx = data.lastIndexOf('-');
+    const num = data.slice(idx + 1);
+    const counter = document.querySelector(`.tree-toys__item__count-${num}`);
+
+    if (isMap) {
+      (<HTMLAreaElement>area).appendChild(elem);
+      elem.style.left = ev.offsetX - 25 + 'px';
+      elem.style.top = ev.y - 25 - 70 + 'px';
+      counter.innerHTML = (counter.parentElement.children.length - 1).toString();
+    } 
+    else {
+      const parent = document.querySelector(`.parent-${num}`);
+      (<HTMLDivElement>parent).appendChild(elem);
+      elem.style.left = 'calc(50% - 25px)';
+      elem.style.top = 'calc(50% - 25px)';
+      counter.innerHTML = (counter.parentElement.children.length - 1).toString();
+    }
     
   }
+  // area.ondragover = (ev) => { ev.preventDefault(); }
+  // area.ondrop = (ev) => {
+  //   ev.preventDefault();
+  //   const data = ev.dataTransfer.getData("text");
+  //   const elem = document.getElementById(data);
+  //   (<HTMLAreaElement>area).appendChild(elem);
+  //   elem.style.position = 'absolute';
+  //   elem.style.left = ev.offsetX - 25 + 'px';
+  //   elem.style.top = ev.y - 25 - 70 + 'px';
+  //   console.log(area.getBoundingClientRect());
+  // }
+  // catalog.ondragover = (ev) => { ev.preventDefault(); }
+  // catalog.ondrop = (ev) => {
+  //   ev.preventDefault();
+  //   const data = ev.dataTransfer.getData("text");
+  //   const num = data.slice(5);
+  //   const parent = document.querySelector(`.parent-${num}`);
+  //   const elem = document.getElementById(data);
+  //   (<HTMLDivElement>parent).appendChild(elem);
+  //   elem.style.position = 'static';
+  // }
+
 }
 
 const drawFavorites = () => {

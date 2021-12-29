@@ -29,14 +29,25 @@ const Utils = {
     const img = document.createElement('img');
     const count = document.createElement('p');
     item.className = 'tree-toys__item d-flex align-items-center justify-content-around';
+    item.classList.add(`parent-${card.num}`);
     img.src = `./src/assets/toys/${card.num}.png`;
     count.innerText = card.count;
+    count.className = `tree-toys__item__count tree-toys__item__count-${card.num}`;
     img.width = 50;
     img.height = 50;
     img.draggable = true;
-    img.id = `drag-${card.num}`;
-    img.ondragstart = handleDragEvent;
-    item.append(img, count);
+    // img.id = `drag-${card.num}`;
+    // img.ondragstart = handleDragEvent;
+    img.style.position = 'absolute';
+    img.style.left = 'calc(50% - 25px)';
+    img.style.top = 'calc(50% - 25px)';
+    item.append(count);
+    for (let i = 0; i < +card.count; i++) {
+      const clone: Node = img.cloneNode(true);
+      (<HTMLImageElement>clone).id = `drag-${i}-${card.num}`;
+      (<HTMLImageElement>clone).ondragstart = handleDragEvent;
+      item.append(clone);
+    }
     return item;
   },
 }
@@ -46,3 +57,4 @@ export default Utils;
 const handleDragEvent = (e: DragEvent<HTMLImageElement>) => {
   e.dataTransfer.setData('text', (<HTMLImageElement>e.target).id);
 };
+
