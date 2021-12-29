@@ -50,6 +50,16 @@ const Utils = {
     }
     return item;
   },
+  addMoreAnimations: () => {
+    const ropes: NodeListOf<HTMLElement> = document.querySelectorAll('.lightrope');
+    ropes.forEach((rope) => {
+      const lights: NodeListOf<HTMLElement> = rope.querySelectorAll('.lightbulb');
+      lights.forEach((light, idx) => {
+        if (idx === 0 || idx % 2 === 0) light.style.animationName = 'flash-2';
+        if (idx - 1 === 0 || idx % 4 === 1) light.style.animationName = 'flash-3';
+      });
+    });
+  }
 }
 
 export default Utils;

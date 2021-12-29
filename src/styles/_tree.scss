@@ -136,6 +136,7 @@
 .garland-item {
   width: 20px;
   height: 20px;
+  cursor: pointer;
   border-radius: 50%;
   box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #133644 0 -1px 9px, #ccc 0 2px 12px;
 }
@@ -157,9 +158,7 @@
 }
 
 .garland-switch {
-  width: 40px;
-  height: 30px;
-  background: greenyellow;
+  
 }
 
 
@@ -167,6 +166,17 @@
   position: relative;
   @include background('../assets/bg/1.jpg', false);
   transition: all .3s;
+}
+
+.lightrope-container {
+  display: none;
+  left: 13px;
+  position: absolute;
+  width: 100%;
+}
+
+.lightrope-container.active {
+  display: block;
 }
 
 .tree-image {
@@ -241,35 +251,32 @@
   cursor: grab;
 }
 
-$globe-width:   12px;
-$globe-height:  28px;
-$globe-spacing: 40px;
-$globe-spread: 3px;
+$globe-width:   10px;
+$globe-height:  10px;
+$globe-spacing: 15px;
+$globe-spread: 1px;
 $light-off-opacity: 0.4;
 
 .lightrope {
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
   position: absolute;
-  z-index: 1;
   margin: -15px 0 0 0;
   padding: 0;
-  pointer-events: none;
   width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
   .lightbulb {
     position: relative;
+    display: inline-block;
+    margin: $globe-spacing/2;
+    width: $globe-width;
+    height: $globe-height;
     animation-fill-mode: both; 
     animation-iteration-count:infinite;
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: block;
-    width: $globe-width;
-    height: $globe-height;
     border-radius: 50%;
-    margin: $globe-spacing/2;
-    display: inline-block;
     background: rgba(0,247,165,1);
     box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(0,247,165,1);
     animation-name: flash-1;
@@ -302,19 +309,6 @@ $light-off-opacity: 0.4;
       top: (0 - ($globe-height/6));
       left: 1px;
     }
-    &:after {
-      content: "";
-      top: (0 - $globe-height/2);
-      left: $globe-width - 3;
-      position: absolute;
-      width: $globe-spacing + 12;
-      height: ($globe-height/3 * 2);
-      border-bottom: solid #222 2px;
-      border-radius: 50%;
-    }
-    &:last-child:after {
-      content: none;
-    }
     &:first-child {
       margin-left: -$globe-spacing;
     }
@@ -337,4 +331,48 @@ $light-off-opacity: 0.4;
     box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(247,0,148,1);} 
     50% { background: rgba(247,0,148,$light-off-opacity);
     box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(247,0,148,0.2);}
+}
+@keyframes red { 
+  0%, 100% { background: rgba(216, 14, 14, 1);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(216, 14, 14,1);} 
+  50% { background: rgba(216, 14, 14,$light-off-opacity);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(216, 14, 14,0.2);}
+}
+@keyframes blue { 
+  0%, 100% { background: rgba(17, 20, 228, 1);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(17, 20, 228,1);} 
+  50% { background: rgba(17, 20, 228,$light-off-opacity);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(17, 20, 228,0.2);}
+}
+@keyframes yellow { 
+  0%, 100% { background: rgba(246, 250, 11, 1);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(246, 250, 11,1);} 
+  50% { background: rgba(246, 250, 11,$light-off-opacity);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(246, 250, 11,0.2);}
+}
+@keyframes green { 
+  0%, 100% { background: rgba(4, 236, 15, 1);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(4, 236, 15, 1);} 
+  50% { background: rgba(4, 236, 15,$light-off-opacity);
+  box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(4, 236, 15,0.2);}
+}
+
+.lightrope {
+  height: 200px;
+}
+
+.lightrope:nth-child(1) {
+  top: 150px;
+}
+.lightrope:nth-child(2) {
+  top: 260px;
+}
+.lightrope:nth-child(3) {
+  top: 370px;
+}
+.lightrope:nth-child(4) {
+  top: 480px;
+}
+.lightrope:nth-child(5) {
+  top: 590px;
 }

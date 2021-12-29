@@ -34,6 +34,7 @@ const start = () => {
   } else if (link === '/tree') {
     addTreeEvents();
     drawFavorites();
+    drawGarland();
   }
 }
 
@@ -303,6 +304,7 @@ const addTreeEvents = () => {
   const garlandItems: NodeListOf<HTMLElement> = document.querySelectorAll('.garland-item');
   const bg: HTMLElement = document.querySelector('.tree');
   const tree: HTMLImageElement = document.querySelector('.tree-image');
+  const garlandSwitch: HTMLElement = document.querySelector('.garland-switch');
 
   audioBtn.addEventListener('click', () => {
     audioBtn.classList.toggle('active');
@@ -327,9 +329,19 @@ const addTreeEvents = () => {
       bg.style.backgroundImage = `url(./src/assets/bg/${item.dataset.bg}.jpg)`;
     });
   });
-  garlandItems.forEach((item) => {
+  garlandItems.forEach((item, idx) => {
+    const colors = ['multi', 'red', 'blue', 'yellow', 'green'];
+    const lights: NodeListOf<HTMLElement> = document.body.querySelectorAll('.lightbulb');
     item.addEventListener('click', () => {
-      console.log('works');
+      lights.forEach((light) => {
+        if (colors[idx] === 'multi') {
+          light.style.animationName = 'flash-1';
+          Utils.addMoreAnimations();
+        } else {
+          light.style.background = colors[idx];
+          light.style.animationName = colors[idx];
+        }
+      })
     });
   });
 
@@ -357,30 +369,10 @@ const addTreeEvents = () => {
       elem.style.top = 'calc(50% - 25px)';
       counter.innerHTML = (counter.parentElement.children.length - 1).toString();
     }
-    
   }
-  // area.ondragover = (ev) => { ev.preventDefault(); }
-  // area.ondrop = (ev) => {
-  //   ev.preventDefault();
-  //   const data = ev.dataTransfer.getData("text");
-  //   const elem = document.getElementById(data);
-  //   (<HTMLAreaElement>area).appendChild(elem);
-  //   elem.style.position = 'absolute';
-  //   elem.style.left = ev.offsetX - 25 + 'px';
-  //   elem.style.top = ev.y - 25 - 70 + 'px';
-  //   console.log(area.getBoundingClientRect());
-  // }
-  // catalog.ondragover = (ev) => { ev.preventDefault(); }
-  // catalog.ondrop = (ev) => {
-  //   ev.preventDefault();
-  //   const data = ev.dataTransfer.getData("text");
-  //   const num = data.slice(5);
-  //   const parent = document.querySelector(`.parent-${num}`);
-  //   const elem = document.getElementById(data);
-  //   (<HTMLDivElement>parent).appendChild(elem);
-  //   elem.style.position = 'static';
-  // }
-
+  garlandSwitch.addEventListener('click', () => {
+    document.querySelector('.lightrope-container').classList.toggle('active');
+  });
 }
 
 const drawFavorites = () => {
@@ -398,4 +390,28 @@ const drawFavorites = () => {
       catalog.append(item);
     });
   }
+}
+
+const drawGarland = () => {
+  const rope = document.querySelectorAll('.lightrope');
+
+  function bez3(y0: number, y1: number, y2: number, y3: number, t: number) {
+    var y01 = y0 + t*(y1 - y0);
+    var y12 = y1 + t*(y2 - y1);
+    var y23 = y2 + t*(y3 - y2);
+    var y012 = y01 + t*(y12 - y01);
+    var y123 = y12 + t*(y23 - y12);
+    return y012 + t*(y123 - y012) + 'px';
+  }
+
+  rope.forEach((item) => {
+    const bulb: NodeListOf<HTMLElement> = item.querySelectorAll('.lightbulb');
+    bulb.forEach((item, idx) => {
+      const num = (idx !== 0)
+          ? (1 / bulb.length) * (idx + 1)
+          : 0;
+      (<HTMLElement>item).style.top = bez3(0, 30, 30, 0, num);
+    });
+  })
+
 }
