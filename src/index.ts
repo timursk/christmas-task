@@ -1,9 +1,9 @@
 import './styles/style.scss';
-import Utils from './components/utils';
-import mainElement from './pages/main.html';
-import decorationsElement from './pages/decorations.html';
-import treeElement from './pages/tree.html';
-import { Colors, ColorsKey, Data, Routes, Shapes, ShapesKey,  Sizes,  SizeKey,  SortModel, SortOrder, SortOrderKey, DragEvent } from './components/types';
+import Utils from './utils/utils';
+import mainElement from './components/main.html';
+import decorationsElement from './components/decorations.html';
+import treeElement from './components/tree.html';
+import { Colors, ColorsKey, Data, Routes, Shapes, ShapesKey,  Sizes,  SizeKey,  SortModel, SortOrder, SortOrderKey, DragEvent } from './utils/types';
 import _default, { target, API } from "nouislider";
 const noUiSlider = _default;
 import data from './data';
