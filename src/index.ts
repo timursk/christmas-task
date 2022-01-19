@@ -396,11 +396,11 @@ const drawGarland = () => {
   const rope = document.querySelectorAll('.lightrope');
 
   function bez3(y0: number, y1: number, y2: number, y3: number, t: number) {
-    var y01 = y0 + t*(y1 - y0);
-    var y12 = y1 + t*(y2 - y1);
-    var y23 = y2 + t*(y3 - y2);
-    var y012 = y01 + t*(y12 - y01);
-    var y123 = y12 + t*(y23 - y12);
+    const y01 = y0 + t*(y1 - y0);
+    const y12 = y1 + t*(y2 - y1);
+    const y23 = y2 + t*(y3 - y2);
+    const y012 = y01 + t*(y12 - y01);
+    const y123 = y12 + t*(y23 - y12);
     return y012 + t*(y123 - y012) + 'px';
   }
 
