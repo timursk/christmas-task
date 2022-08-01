@@ -1,0 +1,88 @@
+<main class="main main-decorations">
+  <div class="container d-flex">
+    <div class="controls-container d-flex flex-column 
+                justify-content-between">
+        <div class="sort controls-item">
+          <div class="d-flex flex-row controls-item">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary sort-button" type="submit"></button>
+          </div>
+          <div class="select">
+            <select class="form-select" name="" id="">
+              <option value="" disabled selected hidden>Choose sort...</option>
+              <option value="alphAsc">From A to Z</option>
+              <option value="alphDesc">From Z to A</option>
+              <option value="quantMin">Year (Low)</option>
+              <option value="quantMax">Year (High)</option>
+            </select>
+          </div>
+        </div>
+        <div class="shape controls-item">
+          <p>Shape</p>
+            <button class="shape-button" data-filter="ball"></button>
+            <button class="shape-button" data-filter="bell"></button>
+            <button class="shape-button" data-filter="cone"></button>
+            <button class="shape-button" data-filter="snowflake"></button>
+            <button class="shape-button" data-filter="figurine"></button>
+          
+        </div>
+        <div class="color controls-item">
+          <p>Color</p>
+          <div class="color-container d-flex justify-content-between align-items-center">
+            <button class="color-button" data-filter="white"></button>
+            <button class="color-button" data-filter="yellow"></button>
+            <button class="color-button" data-filter="red"></button>
+            <button class="color-button" data-filter="blue"></button>
+            <button class="color-button" data-filter="green"></button>
+          </div>
+        </div>
+        <div class="size controls-item">
+          <p>Size</p>
+          <div class="controls-item size-container d-flex justify-content-between">
+            <label class="checkbox-label"><input class="size-input form-check-input" 
+                type="checkbox" name="size" value="big"> 
+              Big
+              </label>
+            <label class="checkbox-label"><input class="size-input form-check-input" 
+                type="checkbox" name="size" value="medium"> 
+              Medium
+            </label>
+            <label class="checkbox-label"><input class="size-input form-check-input" 
+                type="checkbox" name="size" value="small">
+              Small
+            </label>
+          </div>
+        </div>
+        <div class="controls-item">
+          <label class="checkbox-label"><input class="favorite-input form-check-input" type="checkbox"> Favorite</label>
+        </div>
+        <div class="range">
+          <div class="count controls-item">
+            <p>Count of items</p>
+            <div class="count-slider"></div>
+            <div class="count-slider__view d-flex justify-content-between">
+              <span class="count-slider__start">1</span>
+              <span class="count-slider__end">12</span>
+            </div>
+            <p class="count-slider-p"></p>
+          </div>
+          <div class="year controls-item">
+            <p>Year of purchase</p>
+            <div class="year-slider"></div>
+            <div class="year-slider__view d-flex justify-content-between">
+              <span class="year-slider__start">1940</span>
+              <span class="year-slider__end">2020</span>
+            </div>
+          </div>
+        </div>
+        <div class="controls-settings controls-item">
+          <button class="reset-filters btn btn-outline-primary col-5">Reset filters</button>
+        </div>
+    </div>
+    <div class="cards-container">
+      <div class="cards">
+        
+      </div>
+    </div>
+  </div>
+</main>

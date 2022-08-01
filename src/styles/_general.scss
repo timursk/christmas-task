@@ -1,0 +1,79 @@
+* {
+  font-family: $font-type;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  color: $primary-color;
+}
+
+// HEADER
+
+.header {
+  height: $header-footer-height;
+  background: $background-color;
+}
+
+.nav-link {
+  position: relative;
+  transition: $transition !important;
+  text-transform: uppercase;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: $secondary-color !important;
+}
+
+.logo {
+  filter: $primary-filter;
+}
+
+.logo:hover,
+.logo:focus {
+  filter: $secondary-filter;
+}
+
+.favorite {
+  border: none !important;
+  text-transform: uppercase;
+}
+
+.favorite:hover {
+  color: $secondary-color !important;
+  background-color: transparent !important;
+  transition: .3s !important;
+}
+
+// MAIN
+
+.main-background {
+  @include background(
+      $link: 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/christmas-task/assets/bg.jpg',
+      $fixed: fixed);
+  min-height: $main-min-height;
+}
+
+.main {
+  min-height: calc(100vh - 140px);
+  background-color: $background-color;
+}
+
+// FOOTER
+
+.footer {
+  height: $header-footer-height;
+  background: $background-color;
+}
+
+.footer-item {
+  flex: 1 1 0;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.footer__logo {
+  filter: $primary-filter;
+}

@@ -1,0 +1,150 @@
+.controls-container {
+  position: sticky;
+  flex: 1 1 0;
+  top: 30px;
+  height: fit-content;
+}
+
+.controls-container {
+  color: $controls-color;
+}
+
+.controls-item {
+  margin-bottom: $margin-control-items;
+}
+
+.sort-button {
+  @include background(
+      $link: '../assets/svg/search.svg',
+      $fixed: false);
+  width: 40px;
+}
+
+.shape-button {
+  transition: .3s;
+  width: $controls-button-size;
+  height: $controls-button-size;
+  border: none;
+}
+
+.shape-button:hover {
+  filter: brightness(40%);
+}
+
+.shape-button.active  {
+  filter: $primary-filter;
+}
+
+.shape-button:nth-child(2) {
+  @include background-controls__color('../assets/svg/ball.svg');
+}
+.shape-button:nth-child(3) {
+  @include background-controls__color('../assets/svg/bell.svg');
+}
+.shape-button:nth-child(4) {
+  @include background-controls__color('../assets/svg/cone.svg');
+}
+.shape-button:nth-child(5) {
+  @include background-controls__color('../assets/svg/snowflake.svg');
+}
+.shape-button:nth-child(6) {
+  @include background-controls__color('../assets/svg/toy.svg');
+}
+
+.color-container {
+  max-width: 220px;
+}
+
+.color-button {
+  position: relative;
+  width: $controls-button-size;
+  height: $controls-button-size;
+  border-radius: 5px;
+  border: 1px solid $controls-color;
+}
+
+.color-button:hover {
+  border: 2px solid black;
+}
+
+.color-button.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  width: 12px;
+  height: 20px;
+  border: solid #fff;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+.color-button.active:nth-child(1)::after {
+  border-color: #000;
+}
+
+.color-button:nth-child(1) {
+  background-color: white;
+}
+.color-button:nth-child(2) {
+  background-color: #FDD700;
+}
+.color-button:nth-child(3) {
+  background-color: red;
+}
+.color-button:nth-child(4) {
+  background-color: blue;
+}
+.color-button:nth-child(5) {
+  background-color: green;
+}
+
+.form-check-input,
+.checkbox-label {
+  cursor: pointer;
+  user-select: none; 
+}
+
+.count-slider,
+.year-slider,
+.count-slider__view,
+.year-slider__view {
+  width: 200px;
+}
+
+.size-container {
+  width: $controls-button-size * 5;
+}
+
+.cards-container {
+  flex: 2 1 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: space-evenly;
+  gap: 36px 20px;
+  color: $cards-color;
+}
+
+.card-item {
+  height: 300px;
+  border: 1px solid $controls-color;
+  border-radius: 10px;
+  background: $primary-color;
+  cursor: pointer;
+}
+
+.card-item.active {
+  background: $secondary-color;
+}
+
+.card-item__p {
+  margin: 0px;
+}
+
+.no-cards {
+  color: $controls-color;
+}
