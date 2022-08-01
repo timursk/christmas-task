@@ -23,7 +23,7 @@ export type ShapesKey = keyof typeof Shapes;
 
 export enum Colors {
   white = 'белый',
-  yellow = 'жёлтый',
+  yellow = 'желтый',
   red = 'красный',
   blue = 'синий',
   green = 'зелёный'
